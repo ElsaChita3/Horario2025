@@ -120,7 +120,7 @@ function buildList() {
   lines.forEach(line => {
     const [ramo, seccion, prof, dia, modulo, label, color] = line.split(",");
     const key = ramo + "|" + seccion + "|" + prof;
-    if (!grouped[key]) grouped[key] = { bloques: [], label, color, ramo };
+    if (!grouped[key]) grouped[key] = { bloques: [], label, color, ramo, seccion, prof };
     grouped[key].bloques.push({ Día: dia, Módulo: modulo });
   });
 
@@ -142,9 +142,8 @@ function buildList() {
     list.className = "ml-4 mt-2 hidden space-y-1";
 
     secciones.forEach(([key, val]) => {
-      const [_, seccion, __] = key.split("|");
       const li = document.createElement("li");
-      li.textContent = `${seccion} | ${val.label}`;
+      li.textContent = `${val.seccion} | ${val.label}`;
       li.className = "cursor-pointer hover:bg-blue-100 border rounded p-2";
       li.onclick = () => toggleSection(key, val.bloques, li, val.color, val.label);
       list.appendChild(li);
