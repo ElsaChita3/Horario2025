@@ -1,16 +1,17 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Horario Universitario Final</title>
+  <title>Horario UDD 2025</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .mod-slot {
       border: 1px solid #ccc;
       height: 50px;
       text-align: center;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       white-space: pre-line;
       line-height: 1.2;
     }
@@ -19,17 +20,17 @@
     }
   </style>
 </head>
-<body class="bg-gray-100 p-4">
+<body class="bg-gray-50 p-4">
   <h1 class="text-xl font-bold mb-4">🗓️ Planificador Visual por Módulos</h1>
   <div class="flex gap-4">
-    <div class="w-1/3 overflow-y-auto max-h-[80vh]">
+    <div class="w-1/3 overflow-y-auto max-h-[85vh]">
       <div id="courseContainer" class="space-y-4"></div>
     </div>
     <div class="w-2/3">
-      <table class="table-auto border-collapse w-full text-sm">
+      <table class="table-auto border-collapse w-full text-xs">
         <thead>
           <tr>
-            <th class="w-28">Módulo</th>
+            <th class="w-24">Módulo</th>
             <th>Lunes</th><th>Martes</th><th>Miércoles</th><th>Jueves</th><th>Viernes</th>
           </tr>
         </thead>
@@ -41,14 +42,49 @@
   </div>
 
 <script>
-const data = `CREATIVITY LAB,Sección 1,F. Valdivia,Jueves,Módulo 1,CREATIVITY LAB (I)\nF. Valdivia,#F8BBD0\nCREATIVITY LAB,Sección 2,F. Valdivia,Jueves,Módulo 3,CREATIVITY LAB (II)\nF. Valdivia,#F8BBD0\nCREATIVITY LAB,Sección 3,P. Aguirre,Lunes,Otro,CREATIVITY LAB (III)\nP. Aguirre,#F8BBD0\nCREATIVITY LAB,Sección 4,P. Aguirre,Miercoles,Otro,CREATIVITY LAB (IV)\nP. Aguirre,#F8BBD0\nDATOS PARA TOMAR DECISIONES (B-Learning),Sección 3,G. Assad,Martes,Módulo 5,DATOS PARA TOMAR DECISIONES (B-Learning) (III)\nG. Assad,#DCEDC8\nDATOS PARA TOMAR DECISIONES (B-Learning),Sección 4,G. Assad,Martes,Módulo 7,DATOS PARA TOMAR DECISIONES (B-Learning) (IV)\nG. Assad,#DCEDC8\nDATOS PARA TOMAR DECISIONES (online),Sección 1,JP. Salcedo,Lunes,Módulo 8,DATOS PARA TOMAR DECISIONES (online) (I)\nJP. Salcedo,#FFECB3\nDATOS PARA TOMAR DECISIONES (online),Sección 2,JP. Salcedo,Jueves,Módulo 8,DATOS PARA TOMAR DECISIONES (online) (II)\nJP. Salcedo,#FFECB3\nINNOVATION AND SEED CAPITAL (online),Sección 1,A. Cabezas,Viernes,Módulo 1,INNOVATION AND SEED CAPITAL (online) (I)\nA. Cabezas,#FFD1DC\nINNOVATION AND SEED CAPITAL (online),Sección 2,L. Gougain,Martes,Módulo 3,INNOVATION AND SEED CAPITAL (online) (II)\nL. Gougain,#FFD1DC\nINNOVATION AND SEED CAPITAL (online),Sección 3,L. Gougain,Viernes,Módulo 5,INNOVATION AND SEED CAPITAL (online) (III)\nL. Gougain,#FFD1DC\nPLANIFICACIÓN ESTRATEGICA,Sección 1,A. Sprovera,Lunes,Módulo 2,PLANIFICACIÓN ESTRATEGICA (I)\nA. Sprovera,#FFFACD\nPLANIFICACIÓN ESTRATEGICA,Sección 2,A. Sprovera,Miercoles,Módulo 1,PLANIFICACIÓN ESTRATEGICA (II)\nA. Sprovera,#FFFACD\nPLANIFICACIÓN ESTRATEGICA,Sección 3,Y. Gallardo,Miercoles,Módulo 4,PLANIFICACIÓN ESTRATEGICA (III)\nY. Gallardo,#FFFACD\nRAMO,Sección SECCIÓN,PROFESOR,Día,Otro,RAMO (SECCIÓN)\nPROFESOR,#C1E1C1\nTALLER VI,Sección 1,Jaime Gómez,Miercoles,Otro,TALLER VI (I)\nJaime Gómez,#D1C4E9\nTALLER VI,Sección 1,Patricio Aguirre,Lunes,Otro,TALLER VI (I)\nPatricio Aguirre,#D1C4E9\nTALLER VI,Sección 2,Diego Perry,Viernes,Módulo 1,TALLER VI (II)\nDiego Perry,#D1C4E9\nTALLER VI,Sección 2,Simon Bustamante,Martes,Módulo 1,TALLER VI (II)\nSimon Bustamante,#D1C4E9\nTALLER VI,Sección 3,Juan Valdivia,Jueves,Módulo 1,TALLER VI (III)\nJuan Valdivia,#D1C4E9\nTALLER VI,Sección 3,Paulina Diaz,Lunes,Módulo 4,TALLER VI (III)\nPaulina Diaz,#D1C4E9`;
+const data = `PLANIFICACIÓN ESTRATEGICA,1,A. Sprovera,Lunes,Módulo 2,PLANIFICACIÓN ESTRATEGICA (I) - A. Sprovera,#F8BBD0
+PLANIFICACIÓN ESTRATEGICA,1,A. Sprovera,Lunes,Módulo 3,PLANIFICACIÓN ESTRATEGICA (I) - A. Sprovera,#F8BBD0
+PLANIFICACIÓN ESTRATEGICA,2,A. Sprovera,Miercoles,Módulo 1,PLANIFICACIÓN ESTRATEGICA (II) - A. Sprovera,#F8BBD0
+PLANIFICACIÓN ESTRATEGICA,2,A. Sprovera,Miercoles,Módulo 2,PLANIFICACIÓN ESTRATEGICA (II) - A. Sprovera,#F8BBD0
+PLANIFICACIÓN ESTRATEGICA,3,Y. Gallardo,Miercoles,Módulo 4,PLANIFICACIÓN ESTRATEGICA (III) - Y. Gallardo,#F8BBD0
+PLANIFICACIÓN ESTRATEGICA,3,Y. Gallardo,Miercoles,Módulo 5,PLANIFICACIÓN ESTRATEGICA (III) - Y. Gallardo,#F8BBD0
+CREATIVITY LAB,1,F. Valdivia,Jueves,Módulo 1,CREATIVITY LAB (I) - F. Valdivia,#D1C4E9
+CREATIVITY LAB,1,F. Valdivia,Jueves,Módulo 2,CREATIVITY LAB (I) - F. Valdivia,#D1C4E9
+CREATIVITY LAB,2,F. Valdivia,Jueves,Módulo 3,CREATIVITY LAB (II) - F. Valdivia,#D1C4E9
+CREATIVITY LAB,2,F. Valdivia,Jueves,Módulo 4,CREATIVITY LAB (II) - F. Valdivia,#D1C4E9
+CREATIVITY LAB,3,P. Aguirre,Lunes,Módulo 6,CREATIVITY LAB (III) - P. Aguirre,#D1C4E9
+CREATIVITY LAB,3,P. Aguirre,Lunes,Módulo 7,CREATIVITY LAB (III) - P. Aguirre,#D1C4E9
+CREATIVITY LAB,4,P. Aguirre,Miercoles,Módulo 6,CREATIVITY LAB (IV) - P. Aguirre,#D1C4E9
+CREATIVITY LAB,4,P. Aguirre,Miercoles,Módulo 7,CREATIVITY LAB (IV) - P. Aguirre,#D1C4E9
+DATOS PARA TOMAR DECISIONES (online),1,JP. Salcedo,Lunes,Módulo 8,DATOS PARA TOMAR DECISIONES (online) (I) - JP. Salcedo,#FFF9C4
+DATOS PARA TOMAR DECISIONES (online),2,JP. Salcedo,Jueves,Módulo 8,DATOS PARA TOMAR DECISIONES (online) (II) - JP. Salcedo,#FFF9C4
+DATOS PARA TOMAR DECISIONES (B-Learning),3,G. Assad,Martes,Módulo 5,DATOS PARA TOMAR DECISIONES (B-Learning) (III) - G. Assad,#C8E6C9
+DATOS PARA TOMAR DECISIONES (B-Learning),3,G. Assad,Martes,Módulo 6,DATOS PARA TOMAR DECISIONES (B-Learning) (III) - G. Assad,#C8E6C9
+DATOS PARA TOMAR DECISIONES (B-Learning),4,G. Assad,Martes,Módulo 7,DATOS PARA TOMAR DECISIONES (B-Learning) (IV) - G. Assad,#C8E6C9
+DATOS PARA TOMAR DECISIONES (B-Learning),4,G. Assad,Martes,Módulo 8,DATOS PARA TOMAR DECISIONES (B-Learning) (IV) - G. Assad,#C8E6C9
+INNOVATION AND SEED CAPITAL (online),1,A. Cabezas,Viernes,Módulo 1,INNOVATION AND SEED CAPITAL (online) (I) - A. Cabezas,#B2EBF2
+INNOVATION AND SEED CAPITAL (online),1,A. Cabezas,Viernes,Módulo 2,INNOVATION AND SEED CAPITAL (online) (I) - A. Cabezas,#B2EBF2
+INNOVATION AND SEED CAPITAL (online),2,L. Gougain,Martes,Módulo 3,INNOVATION AND SEED CAPITAL (online) (II) - L. Gougain,#B2EBF2
+INNOVATION AND SEED CAPITAL (online),2,L. Gougain,Martes,Módulo 4,INNOVATION AND SEED CAPITAL (online) (II) - L. Gougain,#B2EBF2
+INNOVATION AND SEED CAPITAL (online),3,L. Gougain,Viernes,Módulo 5,INNOVATION AND SEED CAPITAL (online) (III) - L. Gougain,#B2EBF2
+INNOVATION AND SEED CAPITAL (online),3,L. Gougain,Viernes,Módulo 6,INNOVATION AND SEED CAPITAL (online) (III) - L. Gougain,#B2EBF2
+TALLER VI,1,Patricio Aguirre,Lunes,Módulo 9,TALLER VI (I) - Patricio Aguirre,#FFECB3
+TALLER VI,1,Jaime Gómez,Miercoles,Módulo 9,TALLER VI (I) - Jaime Gómez,#FFECB3
+TALLER VI,2,Simon Bustamante,Martes,Módulo 1,TALLER VI (II) - Simon Bustamante,#FFECB3
+TALLER VI,2,Simon Bustamante,Martes,Módulo 2,TALLER VI (II) - Simon Bustamante,#FFECB3
+TALLER VI,2,Diego Perry,Viernes,Módulo 1,TALLER VI (II) - Diego Perry,#FFECB3
+TALLER VI,2,Diego Perry,Viernes,Módulo 2,TALLER VI (II) - Diego Perry,#FFECB3
+TALLER VI,3,Paulina Diaz,Lunes,Módulo 4,TALLER VI (III) - Paulina Diaz,#FFECB3
+TALLER VI,3,Paulina Diaz,Lunes,Módulo 5,TALLER VI (III) - Paulina Diaz,#FFECB3
+TALLER VI,3,Juan Valdivia,Jueves,Módulo 1,TALLER VI (III) - Juan Valdivia,#FFECB3
+TALLER VI,3,Juan Valdivia,Jueves,Módulo 2,TALLER VI (III) - Juan Valdivia,#FFECB3`;
 
 function toggleSection(id, bloques, li, color, label) {
   const active = li.classList.contains("bg-green-100");
   let conflict = false;
 
-  bloques.forEach(({ dia, mod }) => {
-    const cell = document.querySelector(`[data-slot="${dia}-${mod}"]`);
+  bloques.forEach(function(b) {
+    const cell = document.querySelector(`[data-slot="${b.dia}-${b.mod}"]`);
     if (cell && !active && cell.classList.contains("selected") && cell.dataset.section !== id) {
       conflict = true;
     }
@@ -59,8 +95,8 @@ function toggleSection(id, bloques, li, color, label) {
     return;
   }
 
-  bloques.forEach(({ dia, mod }) => {
-    const cell = document.querySelector(`[data-slot="${dia}-${mod}"]`);
+  bloques.forEach(function(b) {
+    const cell = document.querySelector(`[data-slot="${b.dia}-${b.mod}"]`);
     if (!cell) return;
     if (active && cell.dataset.section === id) {
       cell.classList.remove("selected");
@@ -86,7 +122,7 @@ function buildList() {
     const [ramo, seccion, prof, dia, modulo, label, color] = line.split(",");
     const key = ramo + "|" + seccion + "|" + prof;
     if (!grouped[key]) grouped[key] = { bloques: [], label, color };
-    grouped[key].bloques.push({ dia, mod: modulo });
+    grouped[key].bloques.push({ dia: dia, mod: modulo });
   });
 
   const container = document.getElementById("courseContainer");
@@ -101,7 +137,7 @@ function buildList() {
     list.className = "ml-4 mt-2 hidden space-y-1";
 
     const li = document.createElement("li");
-    li.textContent = `${seccion} | ${val.label.split("\\n").join(", ")}`;
+    li.textContent = `${seccion} | ${val.label}`;
     li.className = "cursor-pointer hover:bg-blue-100 border rounded p-2";
     li.onclick = () => toggleSection(key, val.bloques, li, val.color, val.label);
     list.appendChild(li);
