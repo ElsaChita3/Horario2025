@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Horario UDD 2025</title>
+  <title>Horario UDD Final</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .mod-slot {
@@ -83,8 +82,8 @@ function toggleSection(id, bloques, li, color, label) {
   const active = li.classList.contains("bg-green-100");
   let conflict = false;
 
-  bloques.forEach(function(b) {
-    const cell = document.querySelector(`[data-slot="${b.dia}-${b.mod}"]`);
+  bloques.forEach(b => {
+    const cell = document.querySelector(`[data-slot="${b.Día}-${b.Módulo}"]`);
     if (cell && !active && cell.classList.contains("selected") && cell.dataset.section !== id) {
       conflict = true;
     }
@@ -95,8 +94,8 @@ function toggleSection(id, bloques, li, color, label) {
     return;
   }
 
-  bloques.forEach(function(b) {
-    const cell = document.querySelector(`[data-slot="${b.dia}-${b.mod}"]`);
+  bloques.forEach(b => {
+    const cell = document.querySelector(`[data-slot="${b.Día}-${b.Módulo}"]`);
     if (!cell) return;
     if (active && cell.dataset.section === id) {
       cell.classList.remove("selected");
@@ -121,14 +120,20 @@ function buildList() {
   lines.forEach(line => {
     const [ramo, seccion, prof, dia, modulo, label, color] = line.split(",");
     const key = ramo + "|" + seccion + "|" + prof;
-    if (!grouped[key]) grouped[key] = { bloques: [], label, color };
-    grouped[key].bloques.push({ dia: dia, mod: modulo });
+    if (!grouped[key]) grouped[key] = { bloques: [], label, color, ramo };
+    grouped[key].bloques.push({ Día: dia, Módulo: modulo });
   });
+
+  const byRamo = {};
+  for (const k in grouped) {
+    const r = grouped[k].ramo;
+    if (!byRamo[r]) byRamo[r] = [];
+    byRamo[r].push([k, grouped[k]]);
+  }
 
   const container = document.getElementById("courseContainer");
 
-  Object.entries(grouped).forEach(([key, val]) => {
-    const [ramo, seccion, prof] = key.split("|");
+  Object.entries(byRamo).forEach(([ramo, secciones]) => {
     const wrapper = document.createElement("div");
     const header = document.createElement("button");
     header.textContent = "📘 " + ramo;
@@ -136,11 +141,14 @@ function buildList() {
     const list = document.createElement("ul");
     list.className = "ml-4 mt-2 hidden space-y-1";
 
-    const li = document.createElement("li");
-    li.textContent = `${seccion} | ${val.label}`;
-    li.className = "cursor-pointer hover:bg-blue-100 border rounded p-2";
-    li.onclick = () => toggleSection(key, val.bloques, li, val.color, val.label);
-    list.appendChild(li);
+    secciones.forEach(([key, val]) => {
+      const [_, seccion, __] = key.split("|");
+      const li = document.createElement("li");
+      li.textContent = `${seccion} | ${val.label}`;
+      li.className = "cursor-pointer hover:bg-blue-100 border rounded p-2";
+      li.onclick = () => toggleSection(key, val.bloques, li, val.color, val.label);
+      list.appendChild(li);
+    });
 
     header.onclick = () => list.classList.toggle("hidden");
     wrapper.appendChild(header);
@@ -151,5 +159,6 @@ function buildList() {
 
 buildList();
 </script>
+
 </body>
 </html>
